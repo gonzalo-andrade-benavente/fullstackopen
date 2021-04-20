@@ -66,18 +66,22 @@ const Unicafe = () => {
 
             <h1>statistics</h1>
 
-            {
-                allClicks.length === 0 
-                ?   <p> No feedback given</p>
-                :   <>
-                    <Statistics value={ good} text="godd" />
-                    <Statistics value={ neutral } text="neutral" /> 
-                    <Statistics value={ bad } text="bad" /> 
-                    <Statistics value={ allClicks.length } text="all" /> 
-                    <Statistics value={ getAverage(allClicks) } text="average" /> 
-                    <Statistics value={ getPorcentual(good, allClicks) } text="positive" /> 
-                    </>
-            }   
+            <table>
+                <tbody>
+                    {
+                        allClicks.length === 0
+                            ? <tr><td colSpan={2}>No feedback given</td></tr>
+                            : <>
+                                <Statistics value={good} text="godd" />
+                                <Statistics value={neutral} text="neutral" />
+                                <Statistics value={bad} text="bad" />
+                                <Statistics value={allClicks.length} text="all" />
+                                <Statistics value={getAverage(allClicks)} text="average" />
+                                <Statistics value={getPorcentual(good, allClicks)} text="positive" />
+                            </>
+                    }
+                </tbody>
+            </table>
         </>
     )
 
