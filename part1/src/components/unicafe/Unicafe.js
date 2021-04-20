@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Statistics from "./Statistics";
 
 const Unicafe = () => {
 
@@ -63,15 +64,16 @@ const Unicafe = () => {
             <Button text="neutral" onclick={handleNeutral}/>
             <Button text="bad" onclick={handleBad}/>
 
-            <h1>statistics</h1>
+           <Statistics 
+                good={ good }
+                neutral= { neutral }
+                bad={ bad }
+                allClicks = { allClicks }
+                getAverage = { getAverage }
+                getPorcentual = { getPorcentual }
+           />
 
-            
-            good { good } <br /> 
-            neutral { neutral }  <br />
-            bad { bad } <br />
-            all { allClicks.length }<br />
-            average { getAverage( allClicks ) } <br />
-            positive { getPorcentual( good, allClicks) } <br />
+           
             
         </>
     )
