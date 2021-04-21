@@ -1,7 +1,7 @@
 
 const Part = ({ name, exercises }) => {
     return(
-       <h2> { name } <span>{ exercises }</span></h2> 
+       <p> { name } <span>{ exercises }</span></p> 
     )
 }
 export default Part;
