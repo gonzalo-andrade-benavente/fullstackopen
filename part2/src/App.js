@@ -49,7 +49,7 @@ const App = ( { notes } ) => {
     }
   ];
 
-  const course = Math.floor((Math.random() * courses.length) + 0);;
+  //const course = Math.floor((Math.random() * courses.length) + 0);;
 
   return(
 
@@ -61,7 +61,13 @@ const App = ( { notes } ) => {
   //     }
   //   </ul>
   // </div>
-      <Course course={ courses.[course] } /> 
+      <>
+        {
+          courses.map( (c) => <Course course={ c }/> )
+        }
+        {/* <Course course={ actualCourse } />  */}
+      </>
+      
   )
 }
 

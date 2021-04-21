@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../components/Header';
 import Content from '../components/Content';
 
-const Course = ( { course} ) => {
+const Course = ( {course} ) => {
+    console.log(course);
     const { name, parts } = course;
     return(
         <>
