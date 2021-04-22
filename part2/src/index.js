@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+//import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import Notes from './Notes';
 
 const notes = [
   {
     id: 1,
     content: 'HTML is easy',
     date: '2019-05-30T17:30:31.098Z',
-    important: true
+    important: false
   },
   {
     id: 2,
@@ -28,7 +30,7 @@ const notes = [
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Notes notes={ notes }/>
   </React.StrictMode>,
   document.getElementById('root')
 );
