@@ -1,4 +1,5 @@
 import { useState } from "react";
+import phonebookService from '../services/phonebooks';
 
 const PersonForm = ({ persons, setPersons } ) => {
 
@@ -26,9 +27,15 @@ const PersonForm = ({ persons, setPersons } ) => {
         const exists = persons.filter(p => p.name === newName);
 
         if (exists.length === 0) {
-            setPersons(persons.concat(newNameObject));
-            setNewName('');
-            setNewNumber('');
+
+            phonebookService
+                .create(newNameObject)
+                .then( newPerson => {
+                    setPersons(persons.concat(newPerson));
+                    setNewName('');
+                    setNewNumber('');
+                });
+
         } else {
             alert(`${newName} is already added to phonebook`);
         }
