@@ -37,7 +37,19 @@ const PersonForm = ({ persons, setPersons } ) => {
                 });
 
         } else {
-            alert(`${newName} is already added to phonebook`);
+            // alert(`${newName} is already added to phonebook`);
+            const result = window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`);
+        
+            if ( result ) {
+                const person = persons.find(p => p.name === newName);
+                const personChange = { ...person, number: newNumber };
+                
+                phonebookService
+                    .update(person.id, personChange)
+                    .then( updatePerson => {
+                        setPersons( persons.map( p => p.id === person.id ? updatePerson : p) );
+                    });
+            } 
         }
 
     }

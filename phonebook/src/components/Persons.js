@@ -3,7 +3,7 @@ import phonebookService from '../services/phonebooks';
 const Persons = ( {persons, setPersons } ) => {
 
     const handleDelete = (name, id) => {
-        const result = window.confirm(`Delete ${name} ?`);
+        const result = window.confirm(` Delete ${name}?`);
 
         if ( result ) {
             phonebookService
