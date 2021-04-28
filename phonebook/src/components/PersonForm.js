@@ -1,7 +1,9 @@
 import { useState } from "react";
 import phonebookService from '../services/phonebooks';
 
-const PersonForm = ({ persons, setPersons } ) => {
+const PersonForm = ({ persons, setPersons, setSuccess } ) => {
+
+    //console.log(setSuccess);
 
     const [newName, setNewName] = useState('');
     const [newNumber, setNewNumber] = useState('');
@@ -34,6 +36,10 @@ const PersonForm = ({ persons, setPersons } ) => {
                     setPersons(persons.concat(newPerson));
                     setNewName('');
                     setNewNumber('');
+                    setSuccess(`Added ${ newName }`);
+                    setTimeout( () => {
+                        setSuccess(null);
+                    }, 3000);
                 });
 
         } else {

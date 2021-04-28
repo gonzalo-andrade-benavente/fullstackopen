@@ -1,13 +1,32 @@
 import { useEffect, useState } from "react";
-import axios from 'axios';
+
 import Note from './components/Note';
 import noteService from './services/notes';
+import './index.css';
+import Notification from './components/Notificacion';
+
+const Footer = () => {
+    const footerStyle = {
+        color: 'green',
+        fontStyle: 'italic',
+        fontSize: 16
+    }
+
+    return(
+        <div style={ footerStyle }>
+            <br />
+            <em>Note app, Department of Computer Science, University of Helsinki 2021</em>
+        </div>
+    )
+}
+
 
 const Notes = () => {
 
     const [notes, setNotes] = useState([]);
     const [newNote, setNewNote] = useState('');
     const [showAll, setShowAll] = useState(true);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const hookEffect = () => {
         
@@ -81,6 +100,7 @@ const Notes = () => {
     return (
         <>
             <h1>Notes</h1>
+            <Notification message={ errorMessage }/>
             <button onClick={() => setShowAll(!showAll)}>
                 show {showAll ? 'important' : 'all'}
             </button>
@@ -94,6 +114,7 @@ const Notes = () => {
                 <button type="submit">save</button>
             </form>
 
+            <Footer />
         </>
     )
 
