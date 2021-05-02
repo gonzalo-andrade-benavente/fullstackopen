@@ -1,5 +1,8 @@
 const express = require('express');
+const morgan = require('morgan');
+
 const app = express();
+morgan('tiny');
 
 let persons = [
     {
@@ -69,7 +72,39 @@ let persons = [
     }
   ];
 
+
+// MDW
+
+const requestLogger = (req, res, next) => {
+    
+    const dateLog = new Date();
+
+    console.log('Method', req.method );
+    console.log('Path', req.path );
+    console.log('Body', req.body );
+    console.log('Time', dateLog.toString() );
+    console.log('---');
+    next();
+}
+
+const unknownEndpoint = (req, res) => {
+    res.status(404).send({ error: 'unknown endpoint' })
+}
+  
+//app.use(  unknownEndpoint );
+
+
 app.use( express.json() );
+
+morgan.token('param', function(req, res, param) {
+    return JSON.stringify(req.body);
+});
+
+//app.use(morgan('combined'));
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms - :param[id]'));
+
+//app.use( requestLogger );
+
 
 app.get('/api/persons', (req, res) => {
     res.json( persons );
